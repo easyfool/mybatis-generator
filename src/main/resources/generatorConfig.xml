@@ -13,6 +13,7 @@
     <properties resource="jdbc.properties"/>
 
 
+
     <!-- 在MBG工作的时候，需要额外加载的依赖包
        location属性指明加载jar/zip包的全路径
    <classPathEntry location="/Program Files/IBM/SQLLIB/java/db2java.zip" />
@@ -32,6 +33,7 @@
     -->
     <context id="mysql" defaultModelType="flat" targetRuntime="MyBatis3">
 
+
         <!-- 自动识别数据库关键字，默认false，如果设置为true，根据SqlReservedWords中定义的关键字列表；
             一般保留默认值，遇到数据库关键字（Java关键字），使用columnOverride覆盖
          -->
@@ -47,6 +49,15 @@
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
 
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+
+        <!--optional,旨在创建class时，对注释进行控制-->
+        <commentGenerator>
+            <property name="suppressDate" value="true" />
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
         <!-- 必须要有的，使用这个配置链接数据库
             @TODO:是否可以扩展
          -->
@@ -55,6 +66,11 @@
                 connectionURL="${jdbc.url}"
                 userId="${jdbc.user}"
                 password="${jdbc.password}">
+            <!--设置可以获取tables remarks信息-->
+            <property name="useInformationSchema" value="true"/>
+            <!--设置可以获取remarks信息-->
+            <property name="remarks" value="true"/>
+
         </jdbcConnection>
 
         <!-- java类型处理器
@@ -71,6 +87,9 @@
                     scale=0;length<5：使用Short；
              -->
             <property name="forceBigDecimals" value="false"/>
+<!--            <property name="forceBigDecimals" value="false"/>-->
+<!--            <property name="yp_dateTime2String" value="true"/>-->
+<!--            <property name="yp_projectName" value="prs"/>-->
         </javaTypeResolver>
 
 
@@ -173,7 +192,7 @@
             15，delimitAllColumns：设置是否所有生成的SQL中的列名都使用标识符引起来。默认为false，delimitIdentifiers参考context的属性
             注意，table里面很多参数都是对javaModelGenerator，context等元素的默认属性的一个复写；
          -->
-        <table tableName="admin_sys_user" delimitAllColumns="true" delimitIdentifiers="true" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        <table tableName="blog" delimitAllColumns="true" delimitIdentifiers="true" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
 
             <!-- 参考 javaModelGenerator 的 constructorBased属性-->
             <property name="constructorBased" value="false"/>
