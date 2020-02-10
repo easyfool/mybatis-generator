@@ -1,6 +1,6 @@
-package com.github.wangfeng.mybatis_generator.mapper;
+package com.github.wangfeng.mybatis.generator.mapper;
 
-import com.github.wangfeng.mybatis_generator.entity.BlogDO;
+import com.github.wangfeng.mybatis.generator.entity.BlogDO;
 
 public interface BlogMapper {
     int deleteByPrimaryKey(Long id);

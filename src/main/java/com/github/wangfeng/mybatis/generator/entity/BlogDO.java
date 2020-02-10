@@ -1,4 +1,4 @@
-package com.github.wangfeng.mybatis_generator.entity;
+package com.github.wangfeng.mybatis.generator.entity;
 
 import java.io.Serializable;
 

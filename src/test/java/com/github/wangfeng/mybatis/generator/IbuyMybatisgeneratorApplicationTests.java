@@ -1,4 +1,4 @@
-package com.github.wangfeng.mybatis_generator;
+package com.github.wangfeng.mybatis.generator;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

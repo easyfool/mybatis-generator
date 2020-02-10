@@ -35,7 +35,7 @@
 
 
         <!-- 自动识别数据库关键字，默认false，如果设置为true，根据SqlReservedWords中定义的关键字列表；
-            一般保留默认值，遇到数据库关键字（Java关键字），使用columnOverride覆盖
+            一般保留默认值，遇到数据库关键字（Java关键字），使用 columnOverride 覆盖
          -->
         <property name="autoDelimitKeywords" value="false"/>
         <!-- 生成的Java文件的编码 -->
@@ -58,9 +58,7 @@
             <property name="suppressAllComments" value="true" />
         </commentGenerator>
 
-        <!-- 必须要有的，使用这个配置链接数据库
-            @TODO:是否可以扩展
-         -->
+        <!-- 必须要有的，使用这个配置链接数据库 -->
         <jdbcConnection
                 driverClass="${jdbc.driver}"
                 connectionURL="${jdbc.url}"
@@ -98,7 +96,7 @@
             targetPackage：生成的类要放的包，真实的包受enableSubPackages属性控制；
             targetProject：目标项目，指定一个存在的目录下，生成的内容会放到指定目录中，如果目录不存在，MBG不会自动建目录
          -->
-        <javaModelGenerator targetPackage="com.github.wangfeng.mybatis_generator.entity"
+        <javaModelGenerator targetPackage="com.github.wangfeng.mybatis.generator.entity"
                             targetProject="src/main/java">
             <!--  for MyBatis3/MyBatis3Simple
                 自动为每一个生成的类创建一个构造方法，构造方法包含了所有的field；而不是使用setter；
@@ -146,7 +144,7 @@
             注意，如果context是MyBatis3Simple：只支持ANNOTATEDMAPPER和XMLMAPPER
         -->
         <javaClientGenerator
-                targetPackage="com.github.wangfeng.mybatis_generator.mapper"
+                targetPackage="com.github.wangfeng.mybatis.generator.mapper"
                 type="XMLMAPPER"
                 targetProject="src/main/java">
             <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
@@ -158,7 +156,7 @@
         </javaClientGenerator>
 
         <!-- 选择一个table来生成相关文件，可以有一个或多个table，必须要有table元素
-            选择的table会生成一下文件：
+            选择的table会生成以下文件：
             1，SQL map文件
             2，生成一个主键类；
             3，除了BLOB和主键的其他字段的类；
@@ -192,7 +190,7 @@
             15，delimitAllColumns：设置是否所有生成的SQL中的列名都使用标识符引起来。默认为false，delimitIdentifiers参考context的属性
             注意，table里面很多参数都是对javaModelGenerator，context等元素的默认属性的一个复写；
          -->
-        <table tableName="blog" delimitAllColumns="true" delimitIdentifiers="true" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        <table tableName="user" delimitAllColumns="true" delimitIdentifiers="true" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
 
             <!-- 参考 javaModelGenerator 的 constructorBased属性-->
             <property name="constructorBased" value="false"/>
